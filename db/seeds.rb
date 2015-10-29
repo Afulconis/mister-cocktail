@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -6,26 +7,95 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-lemon = Ingredient.create(name: "lemon")
-ice = Ingredient.create(name: "ice")
-mint = Ingredient.create(name: "mint leaves")
-banana = Ingredient.create(name: "Banana")
-maracuja = Ingredient.create(name: "Maracuya")
+Cocktail.destroy_all
+Ingredient.destroy_all
 
-mojito = Cocktail.create(name: "mojito")
-bloody_mary = Cocktail.create(name: "Bloody Mary")
-Cocktail.create(name: "Ginger Ale")
-Cocktail.create(name: "Cuba Libreeeee")
-Cocktail.create(name: "Vodka pure ma gueule")
-
-dose_mint = Dose.new(description: "5 feuilles de menthe")
-dose_mint.ingredient = mint
-dose_mint.cocktail = mojito
-dose_mint.save
-
-mojito.doses.create(description: "5 feuilles de menthe", ingredient_id: mint.id)
-bloody_mary.doses.create(description: "Tomato", ingredient_id: mint.id)
-mojito.doses.create(description: "5 feuilles de menthe", ingredient_id: ice.id)
-mojito.doses.create(description: "5 feuilles de menthe", ingredient_id: mint.id)
-mojito.doses.create(description: "5 feuilles de menthe", ingredient_id: mint.id)
-
+cocktails = [
+  {
+    name: "Old Fashioned",
+    picture: "http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg"
+    },
+  {
+    name: "Daiquiri",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-daiquiri.jpg"
+    },
+  {
+    name: "Margarita",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-margarita.jpg"
+    },
+  {
+    name: "Sidecar",
+    picture: "http://www.seriouseats.com/images/2014/11/20141101-cognac-sidecar-carey-jones.jpg"
+    },
+  {
+    name: "French 75",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-french75.jpg"
+    },
+  {
+    name: "Bloody Mary",
+    picture: "http://www.seriouseats.com/images/2015/03/twase-20150320-21.jpg"
+    },
+  {
+    name: "Irish Coffee",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-irish-coffee.jpg"
+    },
+  {
+    name: "Jack Rose",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-jack-rose.jpg"
+    },
+  {
+    name: "Negroni",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-negroni.jpg"
+    },
+  {
+    name: "Boulevardier",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-boulevardier.jpg"
+    },
+  {
+    name: "Sazerac",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-sazerac.jpg"
+    },
+  {
+    name: "Vieux Carré",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-vieux-carre.jpg"
+    },
+  {
+    name: "Ramos Gin Fizz",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-robyn-lee-ramos-gin-fizz.jpg"
+    },
+  {
+    name: "Mint Julep",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-mint-julep.jpg"
+    },
+  {
+    name: "Whiskey Sour",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-whiskey-sour.jpg"
+    },
+  {
+    name: "Mai Tai",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-mai-tai.jpg"
+    },
+  {
+    name: "Planter's Punch",
+    picture: "http://www.seriouseats.com/images/2015/04/20150406-cocktails-planters-punch-robyn-lee-1.jpg"
+    },
+  {
+    name: "Pisco Sour",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-pisco-sour.jpg"
+    },
+  {
+    name: "Cosmopolitan",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-cosmopolitan.jpg"
+    },
+  {
+    name: "Tom Collins",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-tom-collins.jpg"
+    },
+  {
+    name: "Last Word",
+    picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-last-word.jpg"
+  }
+]
+ingredients = %w(lemon ice mint leaves redbull jagermeister sugar tonic gin rhum)
+ingredients.each { |ingredient| Ingredient.create(name: ingredient) }
+cocktails.each { |cocktail| Cocktail.create(cocktail) }

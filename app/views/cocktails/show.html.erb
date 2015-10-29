@@ -1,9 +1,29 @@
-<h1 class="text-center"><%= @cocktail.name %></h1>
-<p class="text-center"><%= @cocktail.ingredient %></p>
-<p class="text-center"><%= @cocktail.dose %></p>
-
-<p class="text-center"><%= link_to "Retour à la page principale", cocktails_path %><p>
-
 <div class="text-center">
+
+  <h1><%= @cocktail.name %></h1>
+  <ul class="list-unstyled">
+  <% cocktail.doses.each do |dose| %>
+    <li>
+      <% dose.description %> (<%= dose.ingredient.name %>)
+    </li>
+  <% end %>
+  </ul>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.input :description, placeholder: "Give me more bitch" %>
+        <%= f.input :ingredient_id, collection: Ingredient.all, prompt: "Choosee Ingredient ?", placeholder: "choose Ingredient" %>
+        <%= f.submit "Go", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to "Retour à la page principale", cocktails_path %>
+
 
 </div>

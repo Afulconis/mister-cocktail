@@ -5,9 +5,6 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%= simple_form_for @cocktail do |f| %>
         <%= f.input :name, placeholder: "Vlateez" %>
-        <%= f.input :ingredient %>
-        <%= f.input :dose %>
-        <%= f.input :category, collection: Restaurant::CATEGORIES, prompt: "Quel type de bouffe ?" %>
         <%= f.submit "Go", class: "btn btn-primary" %>
       <% end %>
     </div>
