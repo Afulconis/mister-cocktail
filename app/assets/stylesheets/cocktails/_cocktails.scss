@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.picture_size {
-height: 50 px;
-width: 50 px;
+.small_picture {
+height: 70px;
+width: 70px;
+border-radius: 50%;
 }
