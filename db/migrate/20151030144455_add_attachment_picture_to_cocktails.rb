@@ -1,11 +1,11 @@
 class AddAttachmentPictureToCocktails < ActiveRecord::Migration
   def self.up
-    change_table :posts do |t|
+    change_table :cocktails do |t|
       t.attachment :picture
     end
   end
 
   def self.down
-    remove_attachment :posts, :picture
+    remove_attachment :cocktails, :picture
   end
 end
