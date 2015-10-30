@@ -17,6 +17,7 @@
       <%= simple_form_for [@cocktail, @dose] do |f| %>
         <%= f.input :description, placeholder: "Give me more bitch" %>
         <%= f.input :ingredient_id, collection: Ingredient.all, prompt: "Choose an ingredient" %>
+        <%= image_tag @cocktail.picture.url(:medium) %>
         <%= f.submit "Go", class: "btn btn-primary" %>
       <% end %>
     </div>
