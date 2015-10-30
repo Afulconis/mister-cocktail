@@ -5,11 +5,12 @@
   <div class="row">
     <% @cocktails.each do |cocktail| %>
     <div class="col-xs-12 col-sm-4">
+      <%= image_tag cocktail.picture %>
       <h2><%= cocktail.name %></h2>
-      <p><%= cocktail.ingredientS %></p>
-      <p><%= cocktail.doses %></p>
-      <%= link_to "Ouvrez vos papilles - Imbibez-vous!", cocktails_path(cocktail) %>
-      <%= link_to "Delete", cocktails_path(cocktail), method: :delete, class: "btn btn-danger" %>
+      <p><%= cocktail.ingredients.first.name if cocktail.ingredients.first %></p>
+      <p><%= cocktail.doses.first.description if cocktail.doses.first %></p>
+      <%= link_to "Ouvrez vos papilles - Imbibez-vous!", cocktail_path(cocktail) %>
+      <%= link_to "Delete", cocktail_path(cocktail), method: :delete, class: "btn btn-danger" %>
     </div>
     <% end %>
   </div>
